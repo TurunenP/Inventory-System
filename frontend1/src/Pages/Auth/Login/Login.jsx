@@ -1,12 +1,12 @@
-import { useState } from 'react';
-import { useAuth } from '../../../AuthContext/AuthContext'; 
-import { useNavigate } from 'react-router-dom';
-import Bhome from '../../../Components/BHOME/Bhome';
+import { useState } from "react";
+import { useAuth } from "../../../AuthContext/AuthContext";
+import { useNavigate } from "react-router-dom";
+import Bhome from "../../../Components/BHOME/Bhome";
 
 const Login = () => {
-  const { login, user } = useAuth();
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const { login  } = useAuth();
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const [error, setError] = useState(null);
   const navigate = useNavigate();
 
@@ -14,12 +14,8 @@ const Login = () => {
     e.preventDefault();
     try {
       await login(email, password);
- 
-      if (user.role === 'admin') {
-        navigate('/Staff'); // Redirect to the admin dashboard
-      } else {
-        navigate('/Student'); // Redirect to the user dashboard
-      }
+
+     navigate('/Staff') //trying somethind
     } catch (err) {
       setError(err.message);
     }
@@ -56,7 +52,6 @@ const Login = () => {
               Login
             </button>
           </form>
-          
         </div>
       </div>
     </div>
